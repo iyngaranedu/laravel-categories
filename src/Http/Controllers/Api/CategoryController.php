@@ -5,8 +5,12 @@ namespace Iyngaran\Category\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
+use Iyngaran\Category\Actions\CreateCategoryAction;
+use Iyngaran\Category\Actions\UpdateCategoryAction;
 use Iyngaran\Category\Http\Resources\CategoryCollection;
 use Iyngaran\Category\Models\Category;
+use Illuminate\Http\Request;
+use Iyngaran\Category\Http\Resources\Category as CategoryResource;
 
 class CategoryController extends Controller
 {
@@ -15,26 +19,31 @@ class CategoryController extends Controller
         return response()->json(new CategoryCollection($category->get()));
     }
 
-    public function store(): JsonResponse
+    public function store(Request $request): JsonResponse
     {
         return response()->json(
-            [],
+            new CategoryResource((new CreateCategoryAction())->execute($request)),
             201
         );
     }
 
-    public function show(): JsonResponse
+    public function show(Category $category): JsonResponse
     {
-        return response()->json([]);
+        return response()->json(
+            new CategoryResource($category)
+        );
     }
 
-    public function update(): JsonResponse
+    public function update(Request $request, Category $category): JsonResponse
     {
-        return response()->json([]);
+        return response()->json(
+            new CategoryResource((new UpdateCategoryAction())->execute($request, $category)),
+            200
+        );
     }
 
-    public function destroy(): JsonResponse
+    public function destroy(Category $category): JsonResponse
     {
-        return response()->json([], 204);
+        return response()->json($category->delete(), 204);
     }
 }

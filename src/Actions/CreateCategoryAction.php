@@ -3,12 +3,13 @@
 
 namespace Iyngaran\Category\Actions;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Iyngaran\Category\Models\Category;
 
 class CreateCategoryAction
 {
-    public function execute(FormRequest $request)
+    public function execute(Request $request): Category
     {
-        dd($request->all());
+        return Category::create($request->all());
     }
 }
