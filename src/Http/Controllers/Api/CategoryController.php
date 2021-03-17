@@ -3,14 +3,14 @@
 
 namespace Iyngaran\Category\Http\Controllers\Api;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Iyngaran\Category\Actions\CreateCategoryAction;
 use Iyngaran\Category\Actions\UpdateCategoryAction;
+use Iyngaran\Category\Http\Resources\Category as CategoryResource;
 use Iyngaran\Category\Http\Resources\CategoryCollection;
 use Iyngaran\Category\Models\Category;
-use Illuminate\Http\Request;
-use Iyngaran\Category\Http\Resources\Category as CategoryResource;
 
 class CategoryController extends Controller
 {

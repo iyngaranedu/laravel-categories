@@ -11,6 +11,7 @@ class UpdateCategoryAction
     public function execute(Request $request, Category $category): Category
     {
         $category->update($request->all());
+
         return $category;
     }
 }
