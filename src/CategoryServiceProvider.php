@@ -2,10 +2,10 @@
 
 namespace Iyngaran\Category;
 
+use Illuminate\Support\Facades\Route;
+use Iyngaran\Category\Commands\CategoryCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Iyngaran\Category\Commands\CategoryCommand;
-use Illuminate\Support\Facades\Route;
 
 class CategoryServiceProvider extends PackageServiceProvider
 {
@@ -52,5 +52,4 @@ class CategoryServiceProvider extends PackageServiceProvider
             }
         );
     }
-
 }

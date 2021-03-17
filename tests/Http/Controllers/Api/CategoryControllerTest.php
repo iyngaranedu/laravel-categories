@@ -3,13 +3,11 @@
 
 namespace Iyngaran\Category\Tests\Http\Controllers\Api;
 
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Iyngaran\Category\Models\Category;
 use Iyngaran\Category\Tests\Models\User;
 use Iyngaran\Category\Tests\TestCase;
-use JetBrains\PhpStorm\ArrayShape;
 
 class CategoryControllerTest extends TestCase
 {
@@ -26,7 +24,7 @@ class CategoryControllerTest extends TestCase
             'small_description' => $this->faker->paragraph,
             'detail_description' => $this->faker->paragraph,
             'display_order' => $this->faker->randomNumber(3),
-            'parent_id' => $parentId
+            'parent_id' => $parentId,
         ];
     }
 
@@ -81,11 +79,10 @@ class CategoryControllerTest extends TestCase
         $response->assertStatus(201);
     }
 
-
     /** @test */
     public function a_category_can_be_updated()
     {
-       $category = Category::factory()->create();
+        $category = Category::factory()->create();
 
         auth()->login(User::create([
             'name' => $this->faker->name,
@@ -116,5 +113,4 @@ class CategoryControllerTest extends TestCase
         );
         $response->assertStatus(204);
     }
-
 }

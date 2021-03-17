@@ -4,13 +4,12 @@ namespace Iyngaran\Category\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\WithFaker;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Iyngaran\Category\CategoryServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
     use WithFaker;
-
 
     public function setUp(): void
     {
