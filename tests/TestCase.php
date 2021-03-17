@@ -1,26 +1,31 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Iyngaran\Category\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\WithFaker;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
+use Iyngaran\Category\CategoryServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use WithFaker;
+
+
     public function setUp(): void
     {
         parent::setUp();
+        $this->setUpFaker();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Iyngaran\\Category\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            CategoryServiceProvider::class,
         ];
     }
 
@@ -33,9 +38,10 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+        include_once __DIR__.'/../database/migrations/create_laravel_categories_table.php.stub';
+        (new \CreateLaravelCategoriesTable())->up();
+
+        include_once __DIR__.'/../tests/migrations/2014_10_12_000000_create_test_tables.php';
+        (new \CreateTestTables())->up();
     }
 }
