@@ -3,8 +3,8 @@
 
 namespace Iyngaran\Category\Http\Controllers\Api;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 use Iyngaran\Category\Http\Resources\CategoryCollection;
 use Iyngaran\Category\Models\Category;
 
