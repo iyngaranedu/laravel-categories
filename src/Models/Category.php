@@ -14,7 +14,6 @@ class Category extends Model
 
     protected $guarded = [];
     protected $table = 'categories';
-    
 
     public function parent(): BelongsTo
     {
