@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Iyngaran\Category\Actions\CreateCategoryAction;
 use Iyngaran\Category\Actions\UpdateCategoryAction;
-use Iyngaran\Category\Http\Resources\Category as CategoryResource;
+use Iyngaran\Category\Http\Resources\CategoryResource as CategoryResource;
 use Iyngaran\Category\Http\Resources\CategoryCollection;
 use Iyngaran\Category\Models\Category;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryController extends Controller
 {
-    public function index(Category $category): JsonResponse
+    public function index(Category $category): AnonymousResourceCollection
     {
-        return response()->json(new CategoryCollection($category->get()));
+        return CategoryResource::collection($category->get());
     }
 
     public function store(Request $request): JsonResponse

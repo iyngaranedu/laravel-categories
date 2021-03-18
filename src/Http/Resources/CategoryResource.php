@@ -4,8 +4,9 @@
 namespace Iyngaran\Category\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Iyngaran\Category\Models\Category;
 
-class Category extends JsonResource
+class CategoryResource extends JsonResource
 {
     public function toArray($request): array
     {
