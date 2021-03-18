@@ -20,6 +20,7 @@ class Category extends JsonResource
             'detail_description' => $this->detail_description,
             'display_order' => $this->display_order,
             'parent_id' => $this->parent_id,
+            'sub_categories' => $this->childCategories,
         ];
     }
 }
