@@ -5,13 +5,12 @@ namespace Iyngaran\Category\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use Iyngaran\Category\Actions\CreateCategoryAction;
 use Iyngaran\Category\Actions\UpdateCategoryAction;
 use Iyngaran\Category\Http\Resources\CategoryResource as CategoryResource;
-use Iyngaran\Category\Http\Resources\CategoryCollection;
 use Iyngaran\Category\Models\Category;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryController extends Controller
 {

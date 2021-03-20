@@ -4,7 +4,6 @@
 namespace Iyngaran\Category\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Iyngaran\Category\Models\Category;
 
 class CategoryResource extends JsonResource
 {
