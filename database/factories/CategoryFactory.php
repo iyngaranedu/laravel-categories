@@ -3,6 +3,7 @@
 namespace Iyngaran\Category\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Iyngaran\Category\Models\Category;
 
 
@@ -12,8 +13,10 @@ class CategoryFactory extends Factory
 
     public function definition(): array
     {
+        $category_name = $this->faker->word;
         return [
-            'name' => $this->faker->word,
+            'name' => $category_name,
+            'slug' => Str::slug($category_name),
             'icon' => '#'.$this->faker->word,
             'image' => $this->faker->word.".png",
             'banner' => $this->faker->word.".png",

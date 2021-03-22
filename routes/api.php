@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Iyngaran\Category\Http\Controllers\Api\CategoryController;
-use Iyngaran\Category\Http\Controllers\PublicController\ParentCategoryController;
-use Iyngaran\Category\Http\Controllers\PublicController\ChildCategoryController;
+use Iyngaran\Category\Http\Controllers\Api\ParentCategoryController;
+use Iyngaran\Category\Http\Controllers\Api\ChildCategoryController;
+use Iyngaran\Category\Http\Controllers\Api\ShowCategoryController;
 
 Route::group(
     ['prefix' => 'categories', 'as' => 'categories.'],
@@ -13,6 +14,9 @@ Route::group(
 
         Route::get('/child-categories/{category}', ChildCategoryController::class)
             ->name('child-categories');
+
+        Route::get('/slug/{category:slug}', ShowCategoryController::class)
+            ->name('show.by.slug');
 
         Route::get('/', [CategoryController::class, 'index'])
             ->name('index');

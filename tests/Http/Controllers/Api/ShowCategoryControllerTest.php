@@ -9,18 +9,24 @@ use Iyngaran\Category\Models\Category;
 use Iyngaran\Category\Tests\Models\User;
 use Iyngaran\Category\Tests\TestCase;
 
-class ParentCategoryControllerTest extends TestCase
+class ShowCategoryControllerTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
 
 
     /** @test */
-    public function parent_categories_can_be_retrieve()
+    public function a_category_can_be_retrieve_by_slug()
     {
         $this->withoutExceptionHandling();
         Category::factory()->count(20)->create();
-        $response = $this->getJson(route('categories.parent-categories'));
+        $category = Category::first();
+        $response = $this->getJson(route('categories.show.by.slug',['category' => $category->slug]));
         $response->assertStatus(200);
+        $response->assertJson([
+            "id" => $category->id,
+            "name" => $category->name,
+            "slug" => $category->slug
+        ]);
     }
 }
