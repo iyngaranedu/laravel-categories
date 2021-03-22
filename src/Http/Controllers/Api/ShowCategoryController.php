@@ -3,7 +3,6 @@
 
 namespace Iyngaran\Category\Http\Controllers\Api;
 
-
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Iyngaran\Category\Http\Resources\CategoryResource as CategoryResource;

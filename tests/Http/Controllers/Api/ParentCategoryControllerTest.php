@@ -18,7 +18,7 @@ class ParentCategoryControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         Category::factory()->count(20)->create();
-        $response = $this->getJson(route('categories.child-categories',['category' => Category::first()->id]));
+        $response = $this->getJson(route('categories.child-categories', ['category' => Category::first()->id]));
         $response->assertStatus(200);
     }
 }
