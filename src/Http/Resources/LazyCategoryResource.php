@@ -5,7 +5,7 @@ namespace Iyngaran\Category\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryMinimalResource extends JsonResource
+class LazyCategoryResource extends JsonResource
 {
     public function toArray($request): array
     {
