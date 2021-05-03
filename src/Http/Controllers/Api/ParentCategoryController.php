@@ -3,6 +3,7 @@
 
 namespace Iyngaran\Category\Http\Controllers\Api;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use Iyngaran\Category\Http\Resources\LazyCategoryResource as CategoryResource;
@@ -10,8 +11,8 @@ use Iyngaran\Category\Models\Category;
 
 class ParentCategoryController extends Controller
 {
-    public function __invoke(Category $category): AnonymousResourceCollection
+    public function __invoke(Category $category): JsonResponse
     {
-        return CategoryResource::collection($category->where('parent_id', null)->get());
+        return response()->json(CategoryResource::collection($category->where('parent_id', null)->get()));
     }
 }

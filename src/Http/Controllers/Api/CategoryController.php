@@ -5,7 +5,6 @@ namespace Iyngaran\Category\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;
 use Iyngaran\Category\Actions\CreateCategoryAction;
 use Iyngaran\Category\Actions\UpdateCategoryAction;
@@ -14,9 +13,9 @@ use Iyngaran\Category\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index(Category $category): AnonymousResourceCollection
+    public function index(Category $category): JsonResponse
     {
-        return CategoryResource::collection($category->get());
+        return response()->json(CategoryResource::collection($category->get()));
     }
 
     public function store(Request $request): JsonResponse
