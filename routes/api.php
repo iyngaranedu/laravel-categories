@@ -5,6 +5,7 @@ use Iyngaran\Category\Http\Controllers\Api\CategoryController;
 use Iyngaran\Category\Http\Controllers\Api\ParentCategoryController;
 use Iyngaran\Category\Http\Controllers\Api\ChildCategoryController;
 use Iyngaran\Category\Http\Controllers\Api\ShowCategoryController;
+use Iyngaran\Category\Http\Controllers\Api\CategoryTreeController;
 
 Route::group(
     ['prefix' => 'categories', 'as' => 'categories.'],
@@ -17,6 +18,9 @@ Route::group(
 
         Route::get('/slug/{category:slug}', ShowCategoryController::class)
             ->name('show.by.slug');
+
+        Route::get('/tree', CategoryTreeController::class)
+            ->name('tree');
 
         Route::get('/', [CategoryController::class, 'index'])
             ->name('index');
@@ -32,5 +36,6 @@ Route::group(
 
         Route::delete('/{category}', [CategoryController::class, 'destroy'])
             ->name('delete');
+
     }
 );
